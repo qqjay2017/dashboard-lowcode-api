@@ -18,31 +18,13 @@ export class ApiProxyService {
 
     if (apiConfig.type === 'json') {
       try {
-        return {
-          code: 200,
-          data: {
-            ...apiConfig,
-            data: JSON.parse(apiConfig.content),
-          },
-        };
+        return apiConfig.content;
       } catch (error) {
-        return {
-          code: 200,
-          data: {
-            ...apiConfig,
-            data: apiConfig.content,
-          },
-        };
+        return apiConfig.content;
       }
     }
     if (apiConfig.type === 'js') {
-      return {
-        code: 200,
-        data: {
-          ...apiConfig,
-          data: apiConfig.content,
-        },
-      };
+      return apiConfig.content;
     }
   }
 
@@ -61,20 +43,9 @@ export class ApiProxyService {
         response,
       });
 
-      return {
-        code: 200,
-        data: {
-          ...apiConfig,
-          data: proxyRes,
-        },
-      };
+      return proxyRes;
     } catch (error) {
-      return {
-        code: 200,
-        data: {
-          ...apiConfig,
-        },
-      };
+      return error;
     }
   }
 
