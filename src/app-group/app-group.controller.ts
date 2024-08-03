@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateAppGroupDto } from './dto/createAppGroup.dto';
@@ -16,7 +17,7 @@ export class AppGroupController {
   constructor(private appGroupService: AppGroupService) {}
 
   @Get()
-  findAll(@Param() param: IdParamDto) {
+  findAll(@Query() param: IdParamDto) {
     return this.appGroupService.findAll(param);
   }
   @Post('list')

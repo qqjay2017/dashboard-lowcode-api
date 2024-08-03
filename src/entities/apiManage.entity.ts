@@ -10,23 +10,35 @@ export class ApiManage extends SysColumns {
   })
   type: string;
 
-  @Column()
+  @Column({
+    default: null,
+  })
   description: string;
   @Column({
     type: 'longtext',
   })
   content: string;
 
-  @Column()
+  @Column({
+    default: null,
+  })
   url: string;
-  @Column()
+  @Column({
+    default: null,
+  })
   method: string;
 
-  @Column()
+  @Column({
+    default: null,
+  })
   groupName: string;
-  @Column()
+  @Column({
+    default: null,
+  })
   baseName: string;
-  @Column()
+  @Column({
+    default: null,
+  })
   originName: string;
   @Column({
     type: 'longtext',
