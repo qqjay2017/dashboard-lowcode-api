@@ -14,5 +14,5 @@ export const dbConfig: MysqlConnectionOptions = {
   database: 'dashboard',
   synchronize: isDevelopment,
   entities: [join(__dirname, '../**/*.entity{.ts,.js}')],
-  timezone: '+8',
+  timezone: '+08:00',
 };

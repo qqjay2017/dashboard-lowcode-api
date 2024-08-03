@@ -12,6 +12,8 @@ import { Designer } from 'src/entities/designer.entity';
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({
+        // whitelist: true,
+        // forbidNonWhitelisted: false,
         transform: true,
         transformOptions: {
           enableImplicitConversion: true,

@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { CreateDesignerDto } from './dto/createDesigner.dto';
 import { IdParamDto } from './dto/idParam.dto';
@@ -15,8 +16,8 @@ import { DesignerService } from './designer.service';
 export class DesignerController {
   constructor(private designerService: DesignerService) {}
 
-  @Get()
-  findAll(@Param() param: IdParamDto) {
+  @Get('/')
+  findAll(@Query() param: IdParamDto) {
     return this.designerService.findAll(param);
   }
   @Post('list')

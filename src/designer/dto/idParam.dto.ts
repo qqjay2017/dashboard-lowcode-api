@@ -1,11 +1,10 @@
-import { IsOptional, IsString } from 'class-validator';
+import { Allow } from 'class-validator';
 
 export class IdParamDto {
-  @IsString()
-  @IsOptional()
-  id: string;
-
-  @IsString()
-  @IsOptional()
-  appGroupName: string;
+  @Allow()
+  id?: string;
+  @Allow()
+  appGroupName?: string;
+  @Allow()
+  appGroupId?: string;
 }
