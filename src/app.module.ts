@@ -9,16 +9,19 @@ import { ApiManageModule } from './api-manage/api-manage.module';
 import { ApiGroupModule } from './api-group/api-group.module';
 import { ApiBaseModule } from './api-base/api-base.module';
 import { ApiOriginModule } from './api-origin/api-origin.module';
+import { ApiProxyModule } from './api-proxy/api-proxy.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(dbConfig),
     DesignerModule,
     AppGroupModule,
-    TypeOrmModule.forRoot(dbConfig),
+
     ApiManageModule,
     ApiGroupModule,
     ApiBaseModule,
     ApiOriginModule,
+    ApiProxyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

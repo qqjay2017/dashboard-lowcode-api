@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { IdParamDto } from 'src/designer/dto';
 import { ApiBaseService } from './api-base.service';
 import { CreateApiBaseDto } from './dto/createApiBase.dto';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('api-base')
+@UseInterceptors(TransformInterceptor)
 export class ApiBaseController {
   constructor(private apiGroupService: ApiBaseService) {}
 

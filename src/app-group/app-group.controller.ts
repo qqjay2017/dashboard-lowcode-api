@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateAppGroupDto } from './dto/createAppGroup.dto';
 import { AppGroupService } from './app-group.service';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('app-group')
+@UseInterceptors(TransformInterceptor)
 export class AppGroupController {
   constructor(private appGroupService: AppGroupService) {}
 

@@ -14,5 +14,6 @@ import { ApiOrigin } from 'src/entities/apiOrigin.entity';
   ],
   controllers: [ApiManageController],
   providers: [...getFeaturePipes(), ApiManageService],
+  exports: [ApiManageService],
 })
 export class ApiManageModule {}

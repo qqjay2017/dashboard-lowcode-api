@@ -22,6 +22,18 @@ export class ApiManageService {
     });
   }
   async pageList() {}
+  async findOneById(id: IdParamDto['id']) {
+    const apiManageItem = await this.apiManageRepo.findOne({
+      where: {
+        id,
+      },
+    });
+    if (!apiManageItem) {
+      throw new NotFoundException();
+    }
+
+    return apiManageItem;
+  }
   async findOne(param: IdParamDto) {
     const apiManageItem = await this.apiManageRepo.findOne({
       where: {

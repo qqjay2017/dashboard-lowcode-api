@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { CreateDesignerDto } from './dto/createDesigner.dto';
 import { IdParamDto } from './dto/idParam.dto';
 import { DesignerService } from './designer.service';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('designer')
+@UseInterceptors(TransformInterceptor)
 export class DesignerController {
   constructor(private designerService: DesignerService) {}
 

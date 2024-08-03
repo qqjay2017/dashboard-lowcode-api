@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiOriginService } from './api-origin.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateApiOriginDto } from './dto/createApiOrigin.dto';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('api-origin')
+@UseInterceptors(TransformInterceptor)
 export class ApiOriginController {
   constructor(private apiGroupService: ApiOriginService) {}
 

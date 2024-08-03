@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiGroupService } from './api-group.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateApiGroupDto } from './dto/createApiGroup.dto';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('api-group')
+@UseInterceptors(TransformInterceptor)
 export class ApiGroupController {
   constructor(private apiGroupService: ApiGroupService) {}
 

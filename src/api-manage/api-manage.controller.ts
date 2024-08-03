@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiManageService } from './api-manage.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateApiManageDto } from './dto/createApiManage.dto';
+import { TransformInterceptor } from 'src/transform.interceptor';
 
 @Controller('api-manage')
+@UseInterceptors(TransformInterceptor)
 export class ApiManageController {
   constructor(private apiManageService: ApiManageService) {}
 
