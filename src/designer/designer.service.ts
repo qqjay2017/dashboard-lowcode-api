@@ -23,16 +23,16 @@ export class DesignerService {
   }
   async pageList() {}
   async findOne(param: IdParamDto) {
-    const designerIten = await this.designerRepo.findOne({
+    const designerItem = await this.designerRepo.findOne({
       where: {
         ...param,
       },
     });
-    if (!designerIten) {
+    if (!designerItem) {
       throw new NotFoundException();
     }
 
-    return designerIten;
+    return designerItem;
   }
   async create(dto: CreateDesignerDto) {
     return await this.designerRepo.save(dto);

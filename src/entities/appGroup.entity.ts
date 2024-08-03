@@ -6,9 +6,13 @@ export class AppGroup extends SysColumns {
   @Column({ unique: true })
   name: string;
 
-  @Column()
+  @Column({
+    default: null,
+  })
   description: string;
-  @Column()
+  @Column({
+    default: null,
+  })
   icon: string;
   @Column({
     default: 0,

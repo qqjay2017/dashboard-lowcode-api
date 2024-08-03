@@ -1,7 +1,7 @@
 import {} from '@nestjs/common';
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 
-export class CreateDesignerDto {
+export class CreateAppGroupDto {
   @IsString()
   name: string;
 
@@ -13,5 +13,5 @@ export class CreateDesignerDto {
   icon?: string;
   @IsNumber()
   @IsOptional()
-  sortNum?: string;
+  sortNum?: number;
 }
