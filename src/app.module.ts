@@ -10,6 +10,7 @@ import { ApiGroupModule } from './api-group/api-group.module';
 import { ApiBaseModule } from './api-base/api-base.module';
 import { ApiOriginModule } from './api-origin/api-origin.module';
 import { ApiProxyModule } from './api-proxy/api-proxy.module';
+import { ChartModule } from './chart/chart.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ApiProxyModule } from './api-proxy/api-proxy.module';
     ApiBaseModule,
     ApiOriginModule,
     ApiProxyModule,
+    ChartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
