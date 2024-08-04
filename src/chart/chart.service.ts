@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IdParamDto } from 'src/designer/dto';
-import { Chart } from 'src/entities/chart.entity';
+import { Chart } from '../entities/chart.entity';
 import { Repository } from 'typeorm';
 import { CreateChartDto } from './dto/createChart.dto';
 import { UpdateChartDto } from './dto/updateChart.dto';

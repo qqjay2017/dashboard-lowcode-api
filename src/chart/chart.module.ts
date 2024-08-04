@@ -4,7 +4,7 @@ import { ChartService } from './chart.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { getFeaturePipes } from 'src/config/getFeaturePipes';
-import { Chart } from 'src/entities/chart.entity';
+import { Chart } from '../entities/chart.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Chart])],

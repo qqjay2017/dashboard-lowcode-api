@@ -22,7 +22,6 @@ export class DesignerController {
 
   @Get('/')
   findAll(@Query() param: IdParamDto) {
-    console.log(param, 'param');
     return this.designerService.findAll(param);
   }
   @Post('list')
