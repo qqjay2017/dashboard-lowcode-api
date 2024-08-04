@@ -18,7 +18,7 @@ export class ApiProxyService {
 
     if (apiConfig.type === 'json') {
       try {
-        return apiConfig.content;
+        return JSON.parse(apiConfig.content);
       } catch (error) {
         return apiConfig.content;
       }
