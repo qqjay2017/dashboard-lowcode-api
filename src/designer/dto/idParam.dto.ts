@@ -8,4 +8,6 @@ export class IdParamDto {
   appGroupName?: string;
   @Allow()
   appGroupId?: string;
+  @Allow()
+  type?: string;
 }

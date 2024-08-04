@@ -1,5 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
+import { ParseIdParamPipe } from 'src/designer/pipes/parseIdPipe';
 
 export const getFeaturePipes = () => {
   return [
@@ -17,6 +18,10 @@ export const getFeaturePipes = () => {
           enableImplicitConversion: true,
         },
       }),
+    },
+    {
+      provide: APP_PIPE,
+      useValue: new ParseIdParamPipe(),
     },
   ];
 };

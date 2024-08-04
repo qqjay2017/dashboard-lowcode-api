@@ -22,6 +22,7 @@ export class ApiManageController {
 
   @Get()
   findAll(@Query() param: IdParamDto) {
+    console.log(param, 'param');
     return this.apiManageService.findAll(param);
   }
   @Post('list')
