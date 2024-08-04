@@ -5,6 +5,8 @@ import { CreateApiManageDto } from './dto/createApiManage.dto';
 import { Repository } from 'typeorm';
 import { ApiManage } from 'src/entities/apiManage.entity';
 import { UpdateApiManageDto } from './dto/updateApiManage.dto';
+import { PaginationDto } from 'src/designer/dto/pagination.dto';
+import { getFindPageOptions } from 'src/utils/getFindPageOptions';
 
 @Injectable()
 export class ApiManageService {
@@ -13,7 +15,7 @@ export class ApiManageService {
     private apiManageRepo: Repository<ApiManage>,
   ) {}
   async findAll(param: IdParamDto) {
-    return await this.apiManageRepo.find({
+    const list = await this.apiManageRepo.find({
       order: {
         updateAt: 'DESC',
       },
@@ -21,8 +23,38 @@ export class ApiManageService {
         ...param,
       },
     });
+    return (list || []).map((item) => {
+      return {
+        ...item,
+        content: undefined,
+      };
+    });
   }
-  async pageList() {}
+  async pageList(pageParam: PaginationDto, param: IdParamDto) {
+    const total = await this.apiManageRepo.count({
+      where: {
+        ...param,
+      },
+    });
+    const list = await this.apiManageRepo.find({
+      ...getFindPageOptions(pageParam),
+      order: {
+        updateAt: 'DESC',
+      },
+      where: {
+        ...param,
+      },
+    });
+    return {
+      rows: (list || []).map((item) => {
+        return {
+          ...item,
+          content: undefined,
+        };
+      }),
+      total: total,
+    };
+  }
   async findOneById(id: IdParamDto['id']) {
     const apiManageItem = await this.apiManageRepo.findOne({
       where: {

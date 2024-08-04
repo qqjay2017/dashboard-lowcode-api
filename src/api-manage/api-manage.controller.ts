@@ -14,6 +14,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { CreateApiManageDto } from './dto/createApiManage.dto';
 import { TransformInterceptor } from 'src/transform.interceptor';
 import { UpdateApiManageDto } from './dto/updateApiManage.dto';
+import { PaginationDto } from 'src/designer/dto/pagination.dto';
 
 @Controller('api-manage')
 @UseInterceptors(TransformInterceptor)
@@ -22,12 +23,11 @@ export class ApiManageController {
 
   @Get()
   findAll(@Query() param: IdParamDto) {
-    console.log(param, 'param');
     return this.apiManageService.findAll(param);
   }
-  @Post('list')
-  pageList() {
-    return this.apiManageService.pageList();
+  @Get('list')
+  pageList(@Query() pageParam: PaginationDto, @Query() param: IdParamDto) {
+    return this.apiManageService.pageList(pageParam, param);
   }
 
   @Get(':id')

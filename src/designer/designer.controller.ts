@@ -14,6 +14,7 @@ import { IdParamDto } from './dto/idParam.dto';
 import { DesignerService } from './designer.service';
 import { TransformInterceptor } from 'src/transform.interceptor';
 import { UpdateDesignerDto } from './dto/updateDesigner.dto';
+import { PaginationDto } from './dto/pagination.dto';
 
 @Controller('designer')
 @UseInterceptors(TransformInterceptor)
@@ -24,9 +25,9 @@ export class DesignerController {
   findAll(@Query() param: IdParamDto) {
     return this.designerService.findAll(param);
   }
-  @Post('list')
-  pageList() {
-    return this.designerService.pageList();
+  @Get('list')
+  pageList(@Query() pageParam: PaginationDto, @Query() param: IdParamDto) {
+    return this.designerService.pageList(pageParam, param);
   }
 
   @Get(':id')

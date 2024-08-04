@@ -14,6 +14,7 @@ import { ChartService } from './chart.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateChartDto } from './dto/createChart.dto';
 import { UpdateChartDto } from './dto/updateChart.dto';
+import { PaginationDto } from 'src/designer/dto/pagination.dto';
 
 @Controller('chart')
 @UseInterceptors(TransformInterceptor)
@@ -24,9 +25,9 @@ export class ChartController {
   findAll(@Query() param: IdParamDto) {
     return this.apiGroupService.findAll(param);
   }
-  @Post('list')
-  pageList() {
-    return this.apiGroupService.pageList();
+  @Get('list')
+  pageList(@Query() pageParam: PaginationDto, @Query() param: IdParamDto) {
+    return this.apiGroupService.pageList(pageParam, param);
   }
 
   @Get(':id')

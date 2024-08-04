@@ -5,6 +5,9 @@ import { Designer } from 'src/entities/designer.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IdParamDto } from './dto/idParam.dto';
 import { UpdateDesignerDto } from './dto/updateDesigner.dto';
+import { PaginationDto } from './dto/pagination.dto';
+
+import { getFindPageOptions } from 'src/utils/getFindPageOptions';
 
 @Injectable()
 export class DesignerService {
@@ -13,16 +16,49 @@ export class DesignerService {
     private designerRepo: Repository<Designer>,
   ) {}
   async findAll(param: IdParamDto) {
-    return await this.designerRepo.find({
+    const list = await this.designerRepo.find({
       order: {
-        createdAt: 'desc',
+        updateAt: 'desc',
+      },
+      where: {
+        ...param,
+      },
+      select: {
+        content: false,
+      },
+    });
+    return (list || []).map((item) => {
+      return {
+        ...item,
+        content: undefined,
+      };
+    });
+  }
+  async pageList(pageParam: PaginationDto, param: IdParamDto) {
+    const total = await this.designerRepo.count({
+      where: {
+        ...param,
+      },
+    });
+    const list = await this.designerRepo.find({
+      ...getFindPageOptions(pageParam),
+      order: {
+        updateAt: 'desc',
       },
       where: {
         ...param,
       },
     });
+    return {
+      rows: (list || []).map((item) => {
+        return {
+          ...item,
+          content: undefined,
+        };
+      }),
+      total: total,
+    };
   }
-  async pageList() {}
   async findOne(param: IdParamDto) {
     const designerItem = await this.designerRepo.findOne({
       where: {
