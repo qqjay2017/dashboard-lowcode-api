@@ -1,10 +1,12 @@
 import {} from '@nestjs/common';
-import { Allow, IsString } from 'class-validator';
+import { Allow, IsOptional, IsString } from 'class-validator';
 
 export class CreateChartDto {
   @IsString()
+  @IsOptional()
   name: string;
   @IsString()
+  @IsOptional()
   type: string;
   @Allow()
   description: string;

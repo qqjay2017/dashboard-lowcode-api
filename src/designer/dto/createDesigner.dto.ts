@@ -1,22 +1,17 @@
 import {} from '@nestjs/common';
-import { IsString, IsOptional } from 'class-validator';
+import { Allow } from 'class-validator';
 
 export class CreateDesignerDto {
-  @IsString()
+  @Allow()
   name: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   coverThumbnail: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   description: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   content: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   appGroupId?: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   appGroupName?: string;
 }
