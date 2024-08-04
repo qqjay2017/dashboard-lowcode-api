@@ -3,6 +3,8 @@ import { isDevelopment } from '.';
 
 import { join } from 'node:path';
 
+
+
 export const dbConfig: MysqlConnectionOptions = {
   type: 'mysql',
   driver: require('mysql2'),
