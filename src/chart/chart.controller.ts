@@ -13,6 +13,7 @@ import { TransformInterceptor } from 'src/transform.interceptor';
 import { ChartService } from './chart.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateChartDto } from './dto/createChart.dto';
+import { UpdateChartDto } from './dto/updateChart.dto';
 
 @Controller('chart')
 @UseInterceptors(TransformInterceptor)
@@ -37,9 +38,9 @@ export class ChartController {
   create(@Body() dto: CreateChartDto) {
     return this.apiGroupService.create(dto);
   }
-  @Put()
-  update(@Body() dto: CreateChartDto) {
-    return this.apiGroupService.update(dto);
+  @Put(':id')
+  update(@Param() param: IdParamDto, @Body() dto: UpdateChartDto) {
+    return this.apiGroupService.update(param.id, dto);
   }
   @Delete(':id')
   deleteOne(@Param() param: IdParamDto) {

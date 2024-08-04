@@ -4,6 +4,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { CreateApiManageDto } from './dto/createApiManage.dto';
 import { Repository } from 'typeorm';
 import { ApiManage } from 'src/entities/apiManage.entity';
+import { UpdateApiManageDto } from './dto/updateApiManage.dto';
 
 @Injectable()
 export class ApiManageService {
@@ -49,8 +50,8 @@ export class ApiManageService {
   async create(dto: CreateApiManageDto) {
     return await this.apiManageRepo.save(dto);
   }
-  async update(dto: CreateApiManageDto) {
-    return await this.apiManageRepo.save(dto);
+  async update(id: string, dto: UpdateApiManageDto) {
+    return await this.apiManageRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.apiManageRepo.softRemove(param);

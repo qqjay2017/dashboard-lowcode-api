@@ -1,17 +1,15 @@
 import {} from '@nestjs/common';
-import { IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsString, Allow, IsNumber } from 'class-validator';
 
 export class CreateAppGroupDto {
   @IsString()
   name: string;
 
-  @IsString()
-  @IsOptional()
+  @Allow()
   description?: string;
-  @IsString()
-  @IsOptional()
+  @Allow()
   icon?: string;
   @IsNumber()
-  @IsOptional()
+  @Allow()
   sortNum?: number;
 }

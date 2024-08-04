@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Designer } from 'src/entities/designer.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IdParamDto } from './dto/idParam.dto';
+import { UpdateDesignerDto } from './dto/updateDesigner.dto';
 
 @Injectable()
 export class DesignerService {
@@ -37,8 +38,8 @@ export class DesignerService {
   async create(dto: CreateDesignerDto) {
     return await this.designerRepo.save(dto);
   }
-  async update(dto: CreateDesignerDto) {
-    return await this.designerRepo.save(dto);
+  async update(id: string, dto: UpdateDesignerDto) {
+    return await this.designerRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.designerRepo.softRemove(param);

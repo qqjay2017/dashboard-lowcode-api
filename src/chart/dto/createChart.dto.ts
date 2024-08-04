@@ -6,7 +6,6 @@ export class CreateChartDto {
   @IsOptional()
   name: string;
   @IsString()
-  @IsOptional()
   type: string;
   @Allow()
   description: string;

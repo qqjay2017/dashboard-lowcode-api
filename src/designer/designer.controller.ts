@@ -13,6 +13,7 @@ import { CreateDesignerDto } from './dto/createDesigner.dto';
 import { IdParamDto } from './dto/idParam.dto';
 import { DesignerService } from './designer.service';
 import { TransformInterceptor } from 'src/transform.interceptor';
+import { UpdateDesignerDto } from './dto/updateDesigner.dto';
 
 @Controller('designer')
 @UseInterceptors(TransformInterceptor)
@@ -21,6 +22,7 @@ export class DesignerController {
 
   @Get('/')
   findAll(@Query() param: IdParamDto) {
+    console.log(param, 'param');
     return this.designerService.findAll(param);
   }
   @Post('list')
@@ -37,9 +39,10 @@ export class DesignerController {
   create(@Body() dto: CreateDesignerDto) {
     return this.designerService.create(dto);
   }
-  @Put()
-  update(@Body() dto: CreateDesignerDto) {
-    return this.designerService.update(dto);
+
+  @Put(':id')
+  update(@Param() param: IdParamDto, @Body() dto: UpdateDesignerDto) {
+    return this.designerService.update(param.id, dto);
   }
   @Delete(':id')
   deleteOne(@Param() param: IdParamDto) {

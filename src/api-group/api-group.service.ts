@@ -4,6 +4,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { ApiGroup } from 'src/entities/apiGroup.entity';
 import { Repository } from 'typeorm';
 import { CreateApiGroupDto } from './dto/createApiGroup.dto';
+import { UpdateApiGroupDto } from './dto/updateApiGroup.dto';
 
 @Injectable()
 export class ApiGroupService {
@@ -37,8 +38,8 @@ export class ApiGroupService {
   async create(dto: CreateApiGroupDto) {
     return await this.apiGroupRepo.save(dto);
   }
-  async update(dto: CreateApiGroupDto) {
-    return await this.apiGroupRepo.save(dto);
+  async update(id: string, dto: UpdateApiGroupDto) {
+    return await this.apiGroupRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.apiGroupRepo.softRemove(param);

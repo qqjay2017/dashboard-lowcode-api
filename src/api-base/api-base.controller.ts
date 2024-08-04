@@ -13,6 +13,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { ApiBaseService } from './api-base.service';
 import { CreateApiBaseDto } from './dto/createApiBase.dto';
 import { TransformInterceptor } from 'src/transform.interceptor';
+import { UpdateApiBaseDto } from './dto/updateApiBase.dto';
 
 @Controller('api-base')
 @UseInterceptors(TransformInterceptor)
@@ -37,9 +38,9 @@ export class ApiBaseController {
   create(@Body() dto: CreateApiBaseDto) {
     return this.apiGroupService.create(dto);
   }
-  @Put()
-  update(@Body() dto: CreateApiBaseDto) {
-    return this.apiGroupService.update(dto);
+  @Put(':id')
+  update(@Param() param: IdParamDto, @Body() dto: UpdateApiBaseDto) {
+    return this.apiGroupService.update(param.id, dto);
   }
   @Delete(':id')
   deleteOne(@Param() param: IdParamDto) {

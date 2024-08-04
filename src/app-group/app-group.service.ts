@@ -4,6 +4,7 @@ import { IdParamDto } from '../designer/dto';
 import { AppGroup } from 'src/entities/appGroup.entity';
 import { Repository } from 'typeorm';
 import { CreateAppGroupDto } from './dto/createAppGroup.dto';
+import { UpdateAppGroupDto } from './dto/updateAppGroup.dto';
 
 @Injectable()
 export class AppGroupService {
@@ -37,8 +38,8 @@ export class AppGroupService {
   async create(dto: CreateAppGroupDto) {
     return await this.appGroupRepo.save(dto);
   }
-  async update(dto: CreateAppGroupDto) {
-    return await this.appGroupRepo.save(dto);
+  async update(id: string, dto: UpdateAppGroupDto) {
+    return await this.appGroupRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.appGroupRepo.softRemove(param);

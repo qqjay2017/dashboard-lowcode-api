@@ -4,6 +4,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { Chart } from 'src/entities/chart.entity';
 import { Repository } from 'typeorm';
 import { CreateChartDto } from './dto/createChart.dto';
+import { UpdateChartDto } from './dto/updateChart.dto';
 
 @Injectable()
 export class ChartService {
@@ -37,8 +38,8 @@ export class ChartService {
   async create(dto: CreateChartDto) {
     return await this.chartRepo.save(dto);
   }
-  async update(dto: CreateChartDto) {
-    return await this.chartRepo.save(dto);
+  async update(id: string, dto: UpdateChartDto) {
+    return await this.chartRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.chartRepo.softRemove(param);

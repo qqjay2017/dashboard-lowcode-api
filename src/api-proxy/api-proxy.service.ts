@@ -34,13 +34,23 @@ export class ApiProxyService {
       reqHeaders,
       response,
       apiConfig,
-    }: { reqHeaders?: any; response: Response; apiConfig: ApiManage },
+      data,
+      query,
+    }: {
+      reqHeaders?: any;
+      response: Response;
+      apiConfig: ApiManage;
+      data?: any;
+      query?: any;
+    },
   ) {
     try {
       const proxyRes = await getProxyRes(apiConfig, {
         reqHeaders,
         originParam: dto.origin,
         response,
+        data,
+        query,
       });
 
       return proxyRes;
@@ -72,6 +82,8 @@ export class ApiProxyService {
         reqHeaders,
         response,
         apiConfig,
+        data: dto.data,
+        query: dto.params,
       });
     }
   }

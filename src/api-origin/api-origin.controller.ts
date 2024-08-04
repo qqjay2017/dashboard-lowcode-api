@@ -13,6 +13,7 @@ import { ApiOriginService } from './api-origin.service';
 import { IdParamDto } from 'src/designer/dto';
 import { CreateApiOriginDto } from './dto/createApiOrigin.dto';
 import { TransformInterceptor } from 'src/transform.interceptor';
+import { UpdateApiOriginDto } from './dto/updateApiOrigin.dto';
 
 @Controller('api-origin')
 @UseInterceptors(TransformInterceptor)
@@ -37,9 +38,9 @@ export class ApiOriginController {
   create(@Body() dto: CreateApiOriginDto) {
     return this.apiGroupService.create(dto);
   }
-  @Put()
-  update(@Body() dto: CreateApiOriginDto) {
-    return this.apiGroupService.update(dto);
+  @Put('id')
+  update(@Param() param: IdParamDto, @Body() dto: UpdateApiOriginDto) {
+    return this.apiGroupService.update(param.id, dto);
   }
   @Delete(':id')
   deleteOne(@Param() param: IdParamDto) {

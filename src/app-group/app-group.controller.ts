@@ -13,6 +13,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { CreateAppGroupDto } from './dto/createAppGroup.dto';
 import { AppGroupService } from './app-group.service';
 import { TransformInterceptor } from 'src/transform.interceptor';
+import { UpdateAppGroupDto } from './dto/updateAppGroup.dto';
 
 @Controller('app-group')
 @UseInterceptors(TransformInterceptor)
@@ -37,9 +38,9 @@ export class AppGroupController {
   create(@Body() dto: CreateAppGroupDto) {
     return this.appGroupService.create(dto);
   }
-  @Put()
-  update(@Body() dto: CreateAppGroupDto) {
-    return this.appGroupService.update(dto);
+  @Put(':id')
+  update(@Param() param: IdParamDto, @Body() dto: UpdateAppGroupDto) {
+    return this.appGroupService.update(param.id, dto);
   }
   @Delete(':id')
   deleteOne(@Param() param: IdParamDto) {

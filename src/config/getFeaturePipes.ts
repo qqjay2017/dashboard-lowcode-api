@@ -6,6 +6,12 @@ export const getFeaturePipes = () => {
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({
+        skipUndefinedProperties: true,
+        skipNullProperties: true,
+        skipMissingProperties: true,
+
+        whitelist: true,
+        forbidNonWhitelisted: false,
         transform: true,
         transformOptions: {
           enableImplicitConversion: true,

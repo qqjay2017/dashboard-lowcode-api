@@ -65,10 +65,14 @@ export async function getProxyRes(
     originParam,
     reqHeaders,
     response,
+    data,
+    query,
   }: {
     originParam: string;
     reqHeaders?: any;
     response: Response;
+    data?: any;
+    query?: any;
   },
 ) {
   const origin = apiManage.originName || originParam;
@@ -76,6 +80,14 @@ export async function getProxyRes(
   const url = origin + join(apiManage?.baseName || '', apiManage?.url || '');
 
   const requestIns = superagent(method, url);
+
+  if (data && method != 'get') {
+    requestIns.send(data);
+  }
+  if (query) {
+    requestIns.query(query);
+  }
+
   const configHeders = getConfigHeaders(apiManage.headers);
 
   const allHeaders = {

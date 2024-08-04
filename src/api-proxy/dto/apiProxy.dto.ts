@@ -13,4 +13,6 @@ export class ApiProxyDto {
   headers?: any;
   @Allow()
   origin?: string;
+  @Allow()
+  params?: any;
 }

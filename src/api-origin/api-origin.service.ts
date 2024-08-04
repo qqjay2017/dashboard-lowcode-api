@@ -4,6 +4,7 @@ import { IdParamDto } from 'src/designer/dto';
 import { ApiOrigin } from 'src/entities/apiOrigin.entity';
 import { Repository } from 'typeorm';
 import { CreateApiOriginDto } from './dto/createApiOrigin.dto';
+import { UpdateApiOriginDto } from './dto/updateApiOrigin.dto';
 
 @Injectable()
 export class ApiOriginService {
@@ -37,8 +38,8 @@ export class ApiOriginService {
   async create(dto: CreateApiOriginDto) {
     return await this.apiBaseNameRepo.save(dto);
   }
-  async update(dto: CreateApiOriginDto) {
-    return await this.apiBaseNameRepo.save(dto);
+  async update(id: string, dto: UpdateApiOriginDto) {
+    return await this.apiBaseNameRepo.update(id, dto);
   }
   async deleteOne(param: IdParamDto) {
     return await this.apiBaseNameRepo.softRemove(param);
