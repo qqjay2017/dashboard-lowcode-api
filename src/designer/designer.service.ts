@@ -60,16 +60,21 @@ export class DesignerService {
     };
   }
   async findOne(param: IdParamDto) {
-    const designerItem = await this.designerRepo.findOne({
-      where: {
-        ...param,
-      },
-    });
-    if (!designerItem) {
-      throw new NotFoundException();
+    try {
+      const designerItem = await this.designerRepo.findOne({
+        where: {
+          ...param,
+        },
+      });
+      if (!designerItem) {
+        throw new NotFoundException();
+      }
+  
+      return designerItem;
+    } catch (error) {
+      return error
+      
     }
-
-    return designerItem;
   }
   async create(dto: CreateDesignerDto) {
     return await this.designerRepo.save(dto);

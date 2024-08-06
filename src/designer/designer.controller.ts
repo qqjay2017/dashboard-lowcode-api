@@ -32,7 +32,11 @@ export class DesignerController {
 
   @Get(':id')
   findOne(@Param() param: IdParamDto) {
-    return this.designerService.findOne(param);
+    try {
+      return this.designerService.findOne(param);
+    } catch (error) {
+        return error
+    }
   }
 
   @Post()
