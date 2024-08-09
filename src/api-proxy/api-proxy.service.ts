@@ -4,6 +4,7 @@ import { ApiManageService } from 'src/api-manage/api-manage.service';
 import { getProxyRes } from './getProxyRes';
 import { Response } from 'express';
 import { ApiManage } from 'src/entities/apiManage.entity';
+import { parseJsonStr } from 'src/utils/parseJsonStr';
 @Injectable()
 export class ApiProxyService {
   constructor(private readonly apiManageService: ApiManageService) {}
@@ -27,7 +28,12 @@ export class ApiProxyService {
       return apiConfig.content;
     }
   }
-
+  /**
+   * 代理http
+   * @param dto 
+   * @param param1 
+   * @returns 
+   */
   async handleProxyHttp(
     dto: ApiProxyDto,
     {
@@ -45,6 +51,7 @@ export class ApiProxyService {
     },
   ) {
     try {
+
       const proxyRes = await getProxyRes(apiConfig, {
         reqHeaders,
         originParam: dto.origin,
@@ -78,8 +85,12 @@ export class ApiProxyService {
         apiConfig,
       });
     } else if (apiConfig.type === 'http') {
+     
       return this.handleProxyHttp(dto, {
-        reqHeaders,
+        reqHeaders: {
+          ...reqHeaders,
+          ...parseJsonStr( apiConfig.headers)
+        },
         response,
         apiConfig,
         data: dto.data,
