@@ -4,7 +4,7 @@ import { ApiManageService } from 'src/api-manage/api-manage.service';
 import { getProxyRes } from './getProxyRes';
 import { Response } from 'express';
 import { ApiManage } from 'src/entities/apiManage.entity';
-import { parseJsonStr } from 'src/utils/parseJsonStr';
+import { compileJsFn, parseJsonStr } from 'src/utils/parseJsonStr';
 @Injectable()
 export class ApiProxyService {
   constructor(private readonly apiManageService: ApiManageService) {}
@@ -52,6 +52,7 @@ export class ApiProxyService {
   ) {
     try {
 
+
       const proxyRes = await getProxyRes(apiConfig, {
         reqHeaders,
         originParam: dto.origin,
@@ -93,7 +94,10 @@ export class ApiProxyService {
         },
         response,
         apiConfig,
-        data: dto.data,
+        data: {
+          ...compileJsFn( apiConfig.busData),
+          ...dto.data
+        },
         query: dto.params,
       });
     }

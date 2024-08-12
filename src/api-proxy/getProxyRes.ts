@@ -78,7 +78,7 @@ export async function getProxyRes(
   const origin = apiManage.originName || originParam;
   const method = (apiManage?.method || 'get').toLowerCase();
   const url = origin + join(apiManage?.baseName || '', apiManage?.url || '');
-  console.log(method,url)
+
   const requestIns = superagent(method, url);
 
   if (data && method != 'get') {

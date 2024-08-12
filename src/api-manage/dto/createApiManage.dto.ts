@@ -24,4 +24,6 @@ export class CreateApiManageDto {
   originName: string;
   @Allow()
   headers: string;
+  @Allow()
+  busData: string;
 }

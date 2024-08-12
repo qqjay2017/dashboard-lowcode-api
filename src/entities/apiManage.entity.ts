@@ -44,4 +44,8 @@ export class ApiManage extends SysColumns {
     type: 'longtext',
   })
   headers: string;
+  @Column({
+    type: 'longtext',
+  })
+  busData: string;
 }
