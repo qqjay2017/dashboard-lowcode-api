@@ -1450,11 +1450,6 @@ asynckit@^0.4.0:
   resolved "https://registry.npmmirror.com/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-aws-ssl-profiles@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npmmirror.com/aws-ssl-profiles/-/aws-ssl-profiles-1.1.1.tgz"
-  integrity sha512-+H+kuK34PfMaI9PNU/NSjBKL5hh/KDM9J72kwYeYEm0A8B1AC4fuCy3qsjnA7lxklgyXsB68yn8Z2xoZEjgwCQ==
-
 babel-jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.npmmirror.com/babel-jest/-/babel-jest-29.7.0.tgz"
@@ -1990,14 +1985,9 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-dayjs@^1.11.12:
+dayjs@^1.11.12, dayjs@^1.11.9:
   version "1.11.12"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.12.tgz#5245226cc7f40a15bf52e0b99fd2a04669ccac1d"
-  integrity sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==
-
-dayjs@^1.11.9:
-  version "1.11.12"
-  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.12.tgz"
   integrity sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==
 
 debug@2.6.9:
@@ -3862,12 +3852,11 @@ mute-stream@1.0.0:
   resolved "https://registry.npmmirror.com/mute-stream/-/mute-stream-1.0.0.tgz"
   integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
-mysql2@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.npmmirror.com/mysql2/-/mysql2-3.11.0.tgz"
-  integrity sha512-J9phbsXGvTOcRVPR95YedzVSxJecpW5A5+cQ57rhHIFXteTP10HCs+VBjS7DHIKfEaI1zQ5tlVrquCd64A6YvA==
+mysql2@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.npmmirror.com/mysql2/-/mysql2-3.3.1.tgz#b7e055812adeb46d96bc65a5b37fa57e70bc0388"
+  integrity sha512-UD84/AvLwO5qmSABEsBTZ7y7JKv3sM8JzWGhuL4tDkJwVsClVVAcelNSR5Unyhxj6/KHBAkjS7qe5/c+gEmNvA==
   dependencies:
-    aws-ssl-profiles "^1.1.1"
     denque "^2.1.0"
     generate-function "^2.3.1"
     iconv-lite "^0.6.3"

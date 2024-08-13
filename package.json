@@ -32,7 +32,7 @@
     "class-validator": "^0.14.1",
     "dayjs": "^1.11.12",
     "handlebars": "^4.7.8",
-    "mysql2": "^3.11.0",
+    "mysql2": "3.3.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "superagent": "^9.0.2",

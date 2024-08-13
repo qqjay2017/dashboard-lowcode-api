@@ -8,7 +8,7 @@ import { dbConfig } from 'src/config/dbConfig';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory:async (configService: ConfigService) => {
         const config = {
             ...dbConfig,
             username:

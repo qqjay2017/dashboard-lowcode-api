@@ -61,8 +61,11 @@ export class ChartService {
         ...param,
       },
     });
+    
+   
     if (!chartItem) {
-      throw new NotFoundException();
+      throw new NotFoundException("图表组件不存在");
+      
     }
 
     return chartItem;
