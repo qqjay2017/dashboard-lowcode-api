@@ -2,19 +2,21 @@
 
 import * as  dayjs from 'dayjs';
 import Handlebars from 'handlebars'
+import { systemIds } from './systemIds';
+
 
 
 export function compileJsFn(jsStr=""){
   const funCode = new Function(
     "dayjs",
-    
+    "systemIds",
     `option=null;${jsStr};return option||{};`
   );
 
   try {
-    return funCode(dayjs)
+    return funCode(dayjs,systemIds)
   } catch (error) {
-    console.log(error,"error")
+    console.error(error,"error")
     return {}
     
   }
@@ -30,7 +32,7 @@ function  parseHandlebarsjsStr(str="{}"){
    
     })
   } catch (error) {
-    console.log(error,"error")
+    console.error(error,"error")
       return str
   }
 

@@ -4,7 +4,7 @@ import { ApiManageService } from 'src/api-manage/api-manage.service';
 import { getProxyRes } from './getProxyRes';
 import { Response } from 'express';
 import { ApiManage } from 'src/entities/apiManage.entity';
-import { compileJsFn, parseJsonStr } from 'src/utils/parseJsonStr';
+import { compileJsFn } from 'src/utils/parseJsonStr';
 @Injectable()
 export class ApiProxyService {
   constructor(private readonly apiManageService: ApiManageService) {}
@@ -78,6 +78,7 @@ export class ApiProxyService {
     },
   ) {
     const apiConfig = await this.apiManageService.findOneById(dto.apiId);
+
     if (!apiConfig) {
       throw new NotFoundException();
     }
@@ -86,11 +87,13 @@ export class ApiProxyService {
         apiConfig,
       });
     } else if (apiConfig.type === 'http') {
-     
+
       return this.handleProxyHttp(dto, {
         reqHeaders: {
-          ...reqHeaders,
-          ...parseJsonStr( apiConfig.headers)
+         ...reqHeaders,
+          ...compileJsFn( apiConfig.headers),
+          ...dto.headers
+
         },
         response,
         apiConfig,
