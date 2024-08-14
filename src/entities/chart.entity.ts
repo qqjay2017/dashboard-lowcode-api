@@ -19,4 +19,8 @@ export class Chart extends SysColumns {
   content: string;
   @Column({ default: '' })
   coverThumbnail?: string;
+  @Column({
+    type: 'longtext',
+  })
+  busDataMock: string;
 }

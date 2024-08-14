@@ -13,4 +13,6 @@ export class CreateChartDto {
   content: string;
   @Allow()
   coverThumbnail;
+  @Allow()
+  busDataMock: string;
 }
